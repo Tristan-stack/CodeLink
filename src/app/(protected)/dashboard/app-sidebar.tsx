@@ -1,13 +1,17 @@
-"use client"
-
-import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar"
+import { Button } from "@/components/ui/button"
+import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from "@/components/ui/sidebar"
 import { cn } from "@/lib/utils"
 import { url } from "inspector"
-import { Bot, CreditCard, LayoutDashboard, Presentation } from "lucide-react"
+import { Bot, CreditCard, LayoutDashboard, Plus, Presentation, Sparkle } from "lucide-react"
 import { projectShutdown } from "next/dist/build/swc/generated-native"
+import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { title } from "process"
+
+import { useTheme } from "next-themes";
+import { Sun, Moon } from "lucide-react";
+
 
 const items = [
     {
@@ -49,10 +53,25 @@ const projects = [
 
 export function AppSidebar() {
     const pathname = usePathname()
+    const {open} = useSidebar()
+    const { theme, setTheme } = useTheme();
     return (
         <Sidebar collapsible="icon" variant="floating">
             <SidebarHeader>
-                Logo
+              <div className="flex items-center gap-2">
+                <Image src="/logo.png" width={40} height={40} alt="CodeLink Logo" />
+                {open && (
+                  <h1 className="text-xl font-bold text-primary">
+                    CodeLink
+                  </h1>
+                )}
+              </div>
+              <Button
+                variant="ghost"
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              >
+                {theme === "dark" ? <Sun /> : <Moon />}
+              </Button>
             </SidebarHeader>
             <SidebarContent>
                 <SidebarGroup>
@@ -105,6 +124,16 @@ export function AppSidebar() {
                                     </SidebarMenuItem>
                                 )
                             })}
+                            <div className="h-2"></div>
+                            <SidebarMenuItem>
+                                <Link href='/create'>
+                                    <Button variant="outline" className="w-fit" size='sm'>
+                                        <Plus />
+                                        Create Project
+                                        
+                                    </Button>
+                                </Link>
+                            </SidebarMenuItem>
                         </SidebarMenu>
 
                     </SidebarGroupContent>
