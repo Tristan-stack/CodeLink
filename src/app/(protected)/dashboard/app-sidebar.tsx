@@ -125,15 +125,18 @@ export function AppSidebar() {
                                 )
                             })}
                             <div className="h-2"></div>
-                            <SidebarMenuItem>
-                                <Link href='/create'>
-                                    <Button variant="outline" className="w-fit" size='sm'>
-                                        <Plus />
-                                        Create Project
-                                        
-                                    </Button>
-                                </Link>
-                            </SidebarMenuItem>
+
+                            {open && (
+                                <SidebarMenuItem>
+                                    <Link href='/create'>
+                                        <Button variant="outline" className="w-fit" size='sm'>
+                                            <Plus />
+                                            Create Project
+                                            
+                                        </Button>
+                                    </Link>
+                                </SidebarMenuItem>
+                            )}
                         </SidebarMenu>
 
                     </SidebarGroupContent>
