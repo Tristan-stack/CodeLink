@@ -22,7 +22,30 @@ const Dashboard = () => {
                         </p>
                     </div>
                 </div>
+
+                <div className="h-4"></div>
+
+                <div className="flex items-center gap-4">
+                    TeamMembers
+                    InviteButton 
+                    ArchiveButton 
+                </div>
+
+
+
             </div>
+
+            <div className="mt-4">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-5">
+                    AskQuestionGemini 
+                    MeetingCard 
+                </div>
+            </div>
+
+            <div className="mt-8">
+                CommitLog
+            </div>
+
         </div>
     );
 };
