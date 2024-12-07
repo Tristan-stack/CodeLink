@@ -5,7 +5,7 @@ const model = genAI.getGenerativeModel({
     model: 'gemini-1.5-flash'
 })
 
-export const summariseCommit = async (diff: string) => {
+export const geminiCommit = async (diff: string) => {
     const reponse = await model.generateContent([
         `You are an expert programmer, and you are trying to summarize a git diff.
 Reminders about the git diff format:
@@ -42,48 +42,3 @@ It is given only as an example of appropriate comments.`,
 
     return reponse.response.text();
 }
-
-console.log(await summariseCommit(
-    `diff --git a/src/app/(protected)/dashboard/app-sidebar.tsx b/src/app/(protected)/dashboard/app-sidebar.tsx
-index 69f207a..06429d0 100644
---- a/src/app/(protected)/dashboard/app-sidebar.tsx
-+++ b/src/app/(protected)/dashboard/app-sidebar.tsx
-@@ -125,15 +125,18 @@ export function AppSidebar() {
-                                 )
-                             })}
-                             <div className="h-2"></div>
--                            <SidebarMenuItem>
--                                <Link href='/create'>
--                                    <Button variant="outline" className="w-fit" size='sm'>
--                                        <Plus />
--                                        Create Project
--
--                                    </Button>
--                                </Link>
--                            </SidebarMenuItem>
-+
-+                            {open && (
-+                                <SidebarMenuItem>
-+                                    <Link href='/create'>
-+                                        <Button variant="outline" className="w-fit" size='sm'>
-+                                            <Plus />
-+                                            Create Project
-+
-+                                        </Button>
-+                                    </Link>
-+                                </SidebarMenuItem>
-+                            )}
-                         </SidebarMenu>
-
-                     </SidebarGroupContent>
-diff --git a/src/app/(protected)/layout.tsx b/src/app/(protected)/layout.tsx
-index 96acea9..99c9d15 100644
---- a/src/app/(protected)/layout.tsx
-+++ b/src/app/(protected)/layout.tsx
-@@ -1,4 +1,4 @@
--'use client'
-+"use client"
- import { SidebarProvider } from '@/components/ui/sidebar'
- import { UserButton } from '@clerk/nextjs'
- import { AppSidebar } from './dashboard/app-sidebar'`
-));
