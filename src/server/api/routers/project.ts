@@ -31,7 +31,7 @@ export const projectRouter = createTRPCRouter(
                             userId: ctx.user.userId!
                         }
                     },
-                    deleltedAt: null
+                    deletedAt: null
                 }
             });
             
