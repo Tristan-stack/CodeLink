@@ -15,6 +15,7 @@ diff --git a/lib/index.js b/lib/index.js
 index aadf691..bfef603 100644
 --- a/lib/index.js
 +++ b/lib/index.js
+@@ -0,0 +1,159 @@
 \`\`\`
 This means that \'lib/index.js\` was modified in this commit. Note that this is only an example.
 Then there is a specifier of the lines that were modified.
