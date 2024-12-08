@@ -46,7 +46,7 @@ export const getCommitHashes = async (githubUrl: string): Promise<Response[]> =>
         new Date(b.commit.author.date).getTime() - new Date(a.commit.author.date).getTime()
     ) as any[];
 
-    return sortedCommits.slice(0, 2).map((commit: any) => ({
+    return sortedCommits.slice(0, 5).map((commit: any) => ({
         commitMessage: commit.commit.message ?? 'No message provided',
         commitHash: commit.sha as string,
         commitAuthorName: commit.commit.author.name ?? 'No author provided',
